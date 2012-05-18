@@ -36,8 +36,7 @@ def getFBQuote():
     response = requests.get(
             "http://dev.markitondemand.com/Api/Quote/json?symbol=FB")
     try:
-        if response.status == 200:
-            data = json.loads(response.text)
+        data = json.loads(response.text)
         data = data['Data']
     except:
         return "Could not retrieve stock data.  Try again shortly."
