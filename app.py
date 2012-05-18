@@ -1,4 +1,5 @@
 import os
+import signal
 
 from flask import Flask
 from flask import request
@@ -37,11 +38,11 @@ def getFBQuote():
     try:
         if response.status == 200:
             data = json.loads(response.text)
+        data = data['Data']
     except:
         return "Could not retrieve stock data.  Try again shortly."
-    return "Last Price: %s Change %: %s  Timestamp: %s" % \
-        (data['Data']['LastPrice'], data['Data']['ChangePercent'],
-                data['Data']['Timestamp'])
+    return "Last Price: %s Change Percent: %s  Timestamp: %s" % \
+        (data['LastPrice'], data['ChangePercent'], data['Timestamp'])
 
 
 @app.errorhandler(500)
@@ -52,6 +53,14 @@ def server_error():
     else:
         response.sms("FB IPO is currently unavailable.  Try again shortly.")
     return str(response)
+
+
+# Handles SIGTERM so that we don't get an error when Heroku wants or needs to
+# restart the dyno
+def graceful_shutdown(signum, frame):
+    exit()
+
+signal.signal(signal.SIGTERM, graceful_shutdown)
 
 
 # If PORT not specified by environment, assume development config.

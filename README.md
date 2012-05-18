@@ -1,11 +1,10 @@
-# Twilio Hackpack for Heroku and Flask
+# Facebook IPO SMS 
 
-An easy-to-use repo to kickstart your Twilio app using Flask and deploy onto
-Heroku.  Easy to clone, easy to tweak, easy to deploy.
+A quick Flask app to text for updates to the Facebook IPO.
 
 [![Build
-Status](https://secure.travis-ci.org/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask.png)]
-(http://travis-ci.org/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
+Status](https://secure.travis-ci.org/RobSpectre/Facebook-IPO-SMS.png)]
+(http://travis-ci.org/RobSpectre/Facebook-IPO-SMS)
 
 
 ## Features
